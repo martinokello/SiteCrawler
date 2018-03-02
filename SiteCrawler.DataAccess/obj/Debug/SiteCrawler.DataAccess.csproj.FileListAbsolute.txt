@@ -1,0 +1,12 @@
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\SiteCrawler.DataAccess.dll.config
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\SiteCrawler.DataAccess.dll
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\SiteCrawler.DataAccess.pdb
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\EntityFramework.dll
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\SiteCrawler.Domain.Models.dll
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\SiteCrawler.Domain.Models.pdb
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\EntityFramework.xml
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\obj\Debug\SiteCrawler.DataAccess.csprojResolveAssemblyReference.cache
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\obj\Debug\SiteCrawler.DataAccess.dll
+C:\C#Projects\SiteCrawler\SiteCrawler.DataAccess\obj\Debug\SiteCrawler.DataAccess.pdb

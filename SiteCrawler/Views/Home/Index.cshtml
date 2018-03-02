@@ -1,0 +1,65 @@
+﻿@model Dictionary<string,string[]>
+<div class="jumbotron">
+    <h1>HireSpace Test Application</h1>
+    <p class="lead">Site Crawler Application by &copy; martinlayooinc.co.uk</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
+        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
+        is an ideal platform for building RESTful applications on the .NET Framework.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-8">
+        <h2>Enter Site Root Url, and click the button to begin Crawling site</h2>
+
+        <hr style="width:60%;text-align:center;"/>
+        @using (Html.BeginForm("Index","Home")){ 
+            <div class="row">
+                <div class="col-md-11">
+                    <label for="domainUrl">Enter Site Details</label><br/>
+                    <input type="text" id="siteDomain" name="domainUrl" placeholder="SiteUrl with protocol e.g http://www.martinlayooinc.co.uk" style="min-width:100%;"/>
+                    @Html.ValidationMessage("domainUrl", new { @style="color:red;"})
+                </div>
+                <div class="col-md-1">
+                    <br/>
+                    <input type="submit" value="Submit" class="btn-primary" id="submit" />
+                </div>
+            </div>
+        }
+        <section>
+                
+                @if (Model != null && Model.Any())
+                {   
+                    <h2>Page and Links Sitemap</h2>
+                    foreach (var key in Model.Keys)
+                    {
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.Raw(!string.IsNullOrEmpty(key) ? "<li>" + key + "</li>" : "<li>&nbsp;</li>")
+                                <hr style="width:65%; text-align:center;" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <ul>
+                                    @foreach (var value in Model[key])
+                                    {
+                                        @Html.Raw(!string.IsNullOrEmpty(value) ? "<li>" + value + "</li>" : "<li>&nbsp;</li>")
+                                    }
+                                </ul>
+                                <hr style="width:65%; text-align:center;" />
+                            </div>
+                        </div>
+                    }
+                }
+        </section>
+    </div>
+</div>

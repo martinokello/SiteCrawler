@@ -1,0 +1,14 @@
+C:\C#Projects\MartinLayooIncMVC\MartinLayooInc.Caching\bin\Release\MartinLayooInc.Caching.dll
+C:\C#Projects\MartinLayooIncMVC\MartinLayooInc.Caching\bin\Release\MartinLayooInc.Caching.pdb
+C:\C#Projects\MartinLayooIncMVC\MartinLayooInc.Caching\obj\Release\MartinLayooInc.Caching.dll
+C:\C#Projects\MartinLayooIncMVC\MartinLayooInc.Caching\obj\Release\MartinLayooInc.Caching.pdb
+C:\C#Projects\MartinLayooIncMVC\MartinLayooInc.Caching\obj\Release\MartinLayooInc.Caching.csprojResolveAssemblyReference.cache
+C:\GitRepositories\MartinLayooIncMVC\MartinLayooInc.Caching\bin\Release\MartinLayooInc.Caching.dll
+C:\GitRepositories\MartinLayooIncMVC\MartinLayooInc.Caching\bin\Release\MartinLayooInc.Caching.pdb
+C:\GitRepositories\MartinLayooIncMVC\MartinLayooInc.Caching\obj\Release\MartinLayooInc.Caching.dll
+C:\GitRepositories\MartinLayooIncMVC\MartinLayooInc.Caching\obj\Release\MartinLayooInc.Caching.pdb
+C:\GitRepositories\MartinLayooIncMVC\MartinLayooInc.Caching\obj\Release\MartinLayooInc.Caching.csprojResolveAssemblyReference.cache
+C:\C#Projects\MartinLayooIncSoftware\MartinLayooInc.Caching\bin\Release\MartinLayooInc.Caching.dll
+C:\C#Projects\MartinLayooIncSoftware\MartinLayooInc.Caching\bin\Release\MartinLayooInc.Caching.pdb
+C:\C#Projects\MartinLayooIncSoftware\MartinLayooInc.Caching\obj\Release\MartinLayooInc.Caching.dll
+C:\C#Projects\MartinLayooIncSoftware\MartinLayooInc.Caching\obj\Release\MartinLayooInc.Caching.pdb

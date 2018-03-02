@@ -1,0 +1,4 @@
+C:\C#Projects\ShadowInternationalSecurity\ShadowInternationalSecurity.Caching\bin\Debug\MartinLayooInc.Caching.dll
+C:\C#Projects\ShadowInternationalSecurity\ShadowInternationalSecurity.Caching\bin\Debug\MartinLayooInc.Caching.pdb
+C:\C#Projects\ShadowInternationalSecurity\ShadowInternationalSecurity.Caching\obj\Debug\MartinLayooInc.Caching.dll
+C:\C#Projects\ShadowInternationalSecurity\ShadowInternationalSecurity.Caching\obj\Debug\MartinLayooInc.Caching.pdb

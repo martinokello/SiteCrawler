@@ -1,0 +1,4 @@
+C:\C#Projects\SiteCrawler\SiteCrawler.Caching\bin\Debug\MartinLayooInc.Caching.dll
+C:\C#Projects\SiteCrawler\SiteCrawler.Caching\bin\Debug\MartinLayooInc.Caching.pdb
+C:\C#Projects\SiteCrawler\SiteCrawler.Caching\obj\Debug\MartinLayooInc.Caching.dll
+C:\C#Projects\SiteCrawler\SiteCrawler.Caching\obj\Debug\MartinLayooInc.Caching.pdb
