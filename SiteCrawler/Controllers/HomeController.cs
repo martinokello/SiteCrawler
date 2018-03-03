@@ -30,7 +30,8 @@ namespace SiteCrawler.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-                return View("Index",new Dictionary<string,string[]>());
+            ViewBag.TimeElapsed = "";
+            return View("Index",new Dictionary<string,string[]>());
         }
         [HttpPost]
         public ActionResult Index(string domainUrl)
@@ -57,8 +58,13 @@ namespace SiteCrawler.Controllers
 
                 //var cachedSiteMap =_siteCrawlerCaching.GetFromCache(string.Format("SiteResults{0}", domainUrl),Int32.Parse(ConfigurationManager.AppSettings["SiteResultDaysToCache"])*3600*24, getOrSaveInCache);
                 _siteCrawlerEngine.RepositoryServices = _reporsitoryService;
+                var startTime =DateTime.Now;
                 _siteCrawlerEngine.Crawl(domainUrl);
+                var endTime = DateTime.Now;
+                var timeSpan = endTime - startTime;
 
+                ViewBag.TimeElapsed = string.Format("Duration of Site Crawl: {0} hours {1} minutes {2} seconds",
+                    timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
                  //var cachedSiteMap = _siteCrawlerEngine.UrlToPagesMapper;
                 return View("Index", _siteCrawlerEngine.UrlToPagesMapper);
             }
