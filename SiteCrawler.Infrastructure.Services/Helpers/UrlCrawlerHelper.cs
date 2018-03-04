@@ -10,18 +10,19 @@ namespace SiteCrawler.Infrastructure.Services.Helpers
     {
         public static string GetAbsoluteUrl(string relativeUrl)
         {
-            if (!relativeUrl.Contains("/.") && !relativeUrl.Contains("/.."))
+            //Relative url . and .. taken care of while crawling.
+            if (!relativeUrl.Contains("./") && !relativeUrl.Contains("../"))
             {
                 return relativeUrl;
             }
-            if (relativeUrl.Contains("/."))
+            if (relativeUrl.Contains("./"))
             {
-                return GetParComposedUrl(relativeUrl, "/.");
+                return GetParComposedUrl(relativeUrl, "./");
             }
 
-            if (relativeUrl.Contains("/.."))
+            if (relativeUrl.Contains("../"))
             {
-                return GetParComposedUrl(relativeUrl, "/.");
+                return GetParComposedUrl(relativeUrl, "../");
             }
 
             return GetAbsoluteUrl(relativeUrl);
@@ -30,11 +31,11 @@ namespace SiteCrawler.Infrastructure.Services.Helpers
         private static string GetParComposedUrl(string relativeUrl,string relativeSymbol)
         {
 
-            var componentUrl = relativeUrl.Substring(relativeUrl.IndexOf(relativeSymbol) + 1);
+            var componentUrl = relativeUrl.Substring(relativeUrl.IndexOf(relativeSymbol) + relativeSymbol.Length);
 
             var baseUrl = relativeUrl.Substring(0, relativeUrl.IndexOf(relativeSymbol));
 
-            return GetAbsoluteUrl(baseUrl + componentUrl);
+            return GetAbsoluteUrl(baseUrl +"/" + componentUrl);
         }
     }
 }

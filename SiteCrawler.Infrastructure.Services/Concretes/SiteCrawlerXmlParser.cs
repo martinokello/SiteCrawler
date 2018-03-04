@@ -14,11 +14,13 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
     public class SiteCrawlerXmlParser : IXmlParser
     {
         private HtmlDocument _htmlContent;
-        public SiteCrawlerXmlParser(string domain)
+        private string _structureDirectory;
+        public SiteCrawlerXmlParser(string domain, string structureDirectory)
         {
             SiteDomain = domain;
             HtmlWeb htmlRequest = new HtmlWeb();
             _htmlContent = htmlRequest.Load(domain);
+            _structureDirectory = structureDirectory;
         }
         public string RootDomain { get; set; }
         public string SiteDomain{get;set;}
@@ -34,10 +36,19 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
                 var p = anchors.Current.GetAttribute("href", "");
                 if (!string.IsNullOrEmpty(p))
                 {
+                    if (p.StartsWith("."))
+                    {
+                        p = GetPreviousDirectory(_structureDirectory, 0) + p;
+                    }
+                    if (p.StartsWith(".."))
+                    {
+                        p = GetPreviousDirectory(_structureDirectory,1) + p;
+                    }
                     if (p.ToLower().StartsWith("/"))
                     {
                         p = RootDomain.Substring(0, RootDomain.LastIndexOf("/")) + p;
                     }
+
                     p = UrlCrawlerHelper.GetAbsoluteUrl(p);
 
                     if (p.ToLower().StartsWith(RootDomain.Substring(0, RootDomain.LastIndexOf("/"))))
@@ -55,6 +66,22 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
             return anchorList.Union(new List<string>()).ToList();
         }
 
+        private string GetPreviousDirectory(string structureDirectory, int previousNthDirectory)
+        {
+            var calculatedDirectory = string.Empty;
+            if (structureDirectory.ToLower().Equals(RootDomain))
+            {
+                return structureDirectory;
+            }
+            var directories = structureDirectory.Split(new char[] { '/' },StringSplitOptions.RemoveEmptyEntries);
+
+            for(var n = previousNthDirectory; n >= 0 && n < directories.Length; n--)
+            {
+                calculatedDirectory = structureDirectory.Substring(0, structureDirectory.LastIndexOf(directories[n]))  ;
+                if (n == previousNthDirectory - 1) break;
+            }
+            return calculatedDirectory;
+        }
         public XDocument Parse(string xmlContent)
         {
             /*

@@ -2,3 +2,4 @@ C:\C#Projects\SiteCrawler\SiteCrawler.Domain.Models\bin\Debug\SiteCrawler.Domain
 C:\C#Projects\SiteCrawler\SiteCrawler.Domain.Models\bin\Debug\SiteCrawler.Domain.Models.pdb
 C:\C#Projects\SiteCrawler\SiteCrawler.Domain.Models\obj\Debug\SiteCrawler.Domain.Models.dll
 C:\C#Projects\SiteCrawler\SiteCrawler.Domain.Models\obj\Debug\SiteCrawler.Domain.Models.pdb
+C:\C#Projects\SiteCrawler\SiteCrawler.Domain.Models\obj\Debug\SiteCrawler.Domain.csprojResolveAssemblyReference.cache

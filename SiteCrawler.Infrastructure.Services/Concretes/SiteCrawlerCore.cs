@@ -30,15 +30,18 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
 
             if (!string.IsNullOrEmpty(pageLink))
             {
-                var xmlParser = new SiteCrawlerXmlParser(url);
+                var xmlParser = new SiteCrawlerXmlParser(url, pageLink);
                 xmlParser.RootDomain = RootDomain;
                 var localLinks = xmlParser.GetLocalLinks();
                 var contentLinks = localLinks.Where(p => _siteprocessor.IsContentPage(p)).ToList();
 
-                UrlToPagesMapper.Add(pageLink, contentLinks.ToArray());
-
+                if (!UrlToPagesMapper.ContainsKey(pageLink))
+                {
+                    UrlToPagesMapper.Add(pageLink, contentLinks.ToArray());
+                }
                 foreach (var childlink in contentLinks)
                 {
+
                     //WriteToDatabase(pageLink, childlink);
                     if (UrlToPagesMapper.ContainsKey(childlink)) continue;
                     var rateOfCrawling = 1000;
