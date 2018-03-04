@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using HtmlAgilityPack;
+using SiteCrawler.Infrastructure.Services.Helpers;
 
 namespace SiteCrawler.Infrastructure.Services.Concretes
 {
@@ -31,18 +32,23 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
             while (anchors.MoveNext())
             {
                 var p = anchors.Current.GetAttribute("href", "");
-                if (!string.IsNullOrEmpty(p) && p!="/" && (p.ToLower().StartsWith(SiteDomain.ToLower()) || p.ToLower().StartsWith("/") || p.ToLower().StartsWith(".")))
+                if (!string.IsNullOrEmpty(p))
                 {
-                    if (p.Contains("?")) p = p.Substring(0, p.IndexOf("?"));
-
-                    if (p.ToLower().StartsWith("/")) {
-                        p = RootDomain.Substring(0,RootDomain.LastIndexOf("/")) + p;
-                    }
-                    if (p.ToLower().StartsWith("."))
+                    if (p.ToLower().StartsWith("/"))
                     {
-                        p = RootDomain.Substring(0, RootDomain.LastIndexOf("/")) + p.Substring(1);
+                        p = RootDomain.Substring(0, RootDomain.LastIndexOf("/")) + p;
                     }
-                    anchorList.Add(p);
+                    p = UrlCrawlerHelper.GetAbsoluteUrl(p);
+
+                    if (p.ToLower().StartsWith(RootDomain.Substring(0, RootDomain.LastIndexOf("/"))))
+                    {
+                        if (p.Contains("?"))
+                        {
+                            p = p.Substring(0, p.IndexOf("?"));
+                        }
+
+                        anchorList.Add(p);
+                    }
                 }
             }
 

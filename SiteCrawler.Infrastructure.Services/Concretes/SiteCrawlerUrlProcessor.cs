@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SiteCrawler.Infrastructure.Services.Helpers;
 
 namespace SiteCrawler.Infrastructure.Services.Concretes
 {
@@ -52,6 +53,8 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
 
         public string GetContentPageName(string url)
         {
+            url = UrlCrawlerHelper.GetAbsoluteUrl(url);
+
             if (IsContentPage(url) && url.Contains("/"))
             {
                 if (url.EndsWith("/")) return url;

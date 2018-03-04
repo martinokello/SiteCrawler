@@ -49,6 +49,7 @@
     <Compile Include="Concretes\SiteCrawlerCore.cs" />
     <Compile Include="Concretes\SiteCrawlerUrlProcessor.cs" />
     <Compile Include="Concretes\SiteCrawlerXmlParser.cs" />
+    <Compile Include="Helpers\UrlCrawlerHelper.cs" />
     <Compile Include="Interfaces\ICrawler.cs" />
     <Compile Include="Interfaces\IHttpRequest.cs" />
     <Compile Include="Interfaces\IUrlProcessor.cs" />

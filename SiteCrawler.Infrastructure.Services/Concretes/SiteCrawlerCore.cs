@@ -35,20 +35,17 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
                 var localLinks = xmlParser.GetLocalLinks();
                 var contentLinks = localLinks.Where(p => _siteprocessor.IsContentPage(p)).ToList();
 
-                if (!UrlToPagesMapper.ContainsKey(pageLink))
-                {
-                    UrlToPagesMapper.Add(pageLink, contentLinks.ToArray());
-                
-                    foreach (var childlink in contentLinks)
-                    {
-                        //WriteToDatabase(pageLink, childlink);
-                        if (UrlToPagesMapper.ContainsKey(childlink)) continue;
-                        var rateOfCrawling = 1000;
-                        Int32.TryParse(ConfigurationManager.AppSettings["IntervalOfCrawling"], out rateOfCrawling);
+                UrlToPagesMapper.Add(pageLink, contentLinks.ToArray());
 
-                        Thread.Sleep(10/*rateOfCrawling*/);
-                        Crawl(childlink);
-                    }
+                foreach (var childlink in contentLinks)
+                {
+                    //WriteToDatabase(pageLink, childlink);
+                    if (UrlToPagesMapper.ContainsKey(childlink)) continue;
+                    var rateOfCrawling = 1000;
+                    Int32.TryParse(ConfigurationManager.AppSettings["IntervalOfCrawling"], out rateOfCrawling);
+
+                    Thread.Sleep(10/*rateOfCrawling*/);
+                    Crawl(childlink);
                 }
             }
         }
