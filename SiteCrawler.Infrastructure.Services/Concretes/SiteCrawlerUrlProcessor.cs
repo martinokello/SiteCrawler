@@ -12,6 +12,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
 {
     public class SiteCrawlerUrlProcessor : IUrlProcessor
     {
+        public string RootDomain { get; set; }
         public string GetPageFromLink(string url)
         {
             var linkNormalized = StripQueryAndParameters(url);
@@ -55,7 +56,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
         {
             url = UrlCrawlerHelper.GetAbsoluteUrl(url);
 
-            if (IsContentPage(url) && url.Contains("/"))
+            if (IsContentPage(url) && url.Contains("/") && url.ToLower().StartsWith(RootDomain.ToLower().Trim('/')))
             {
                 if (url.EndsWith("/")) return url;
                 return url.Substring(url.LastIndexOf("/"));

@@ -69,7 +69,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
         private string GetPreviousDirectory(string structureDirectory, int previousNthDirectory)
         {
             var calculatedDirectory = string.Empty;
-            if (structureDirectory.ToLower().Equals(RootDomain))
+            if (structureDirectory.ToLower().Equals(RootDomain.ToLower()))
             {
                 return structureDirectory;
             }

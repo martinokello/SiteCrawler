@@ -32,6 +32,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
             {
                 var xmlParser = new SiteCrawlerXmlParser(url, pageLink);
                 xmlParser.RootDomain = RootDomain;
+                _siteprocessor.RootDomain = RootDomain;
                 var localLinks = xmlParser.GetLocalLinks();
                 var contentLinks = localLinks.Where(p => _siteprocessor.IsContentPage(p)).ToList();
 
