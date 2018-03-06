@@ -35,15 +35,16 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
             {
                 var p = anchors.Current.GetAttribute("href", "");
                 if (!string.IsNullOrEmpty(p))
-                {
-                    if (p.StartsWith("."))
-                    {
-                        p = GetPreviousDirectory(_structureDirectory, 0) + p;
-                    }
+                {                    
                     if (p.StartsWith(".."))
                     {
                         p = GetPreviousDirectory(_structureDirectory,1) + p;
                     }
+                    if (p.StartsWith("."))
+                    {
+                        p = GetPreviousDirectory(_structureDirectory, 0) + p;
+                    }
+
                     if (p.ToLower().StartsWith("/"))
                     {
                         p = RootDomain.Substring(0, RootDomain.LastIndexOf("/")) + p;
