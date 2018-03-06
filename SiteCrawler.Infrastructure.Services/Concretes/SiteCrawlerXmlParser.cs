@@ -40,7 +40,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
                     {
                         p = GetPreviousDirectory(_structureDirectory,1) + p;
                     }
-                    if (p.StartsWith("."))
+                    else if (p.StartsWith("."))
                     {
                         p = GetPreviousDirectory(_structureDirectory, 0) + p;
                     }
