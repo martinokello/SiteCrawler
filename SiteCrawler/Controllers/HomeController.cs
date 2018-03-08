@@ -78,7 +78,7 @@ namespace SiteCrawler.Controllers
         private bool IsValidDomain(string domain)
         {
             if (string.IsNullOrEmpty(domain)) return false;
-            var domainPattern = "^(http:|https:|)[/][/]([^/]+[.])*[a-zA-Z]+[(.com)|(.co.uk)]$";
+            var domainPattern = "^(http:|https:|)[/][/]([^/]+[.])*[a-zA-Z]+(0-9)*(.[a-zA-Z])+(.[a-zA-Z]+)*$";
             return Regex.IsMatch(domain.ToLower(), domainPattern); 
         }
 

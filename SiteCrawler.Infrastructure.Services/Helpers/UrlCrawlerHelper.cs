@@ -17,18 +17,18 @@ namespace SiteCrawler.Infrastructure.Services.Helpers
             }
             if (relativeUrl.Contains("./"))
             {
-                return GetParComposedUrl(relativeUrl, "./");
+                return GetPartComposedUrl(relativeUrl, "./");
             }
 
             if (relativeUrl.Contains("../"))
             {
-                return GetParComposedUrl(relativeUrl, "../");
+                return GetPartComposedUrl(relativeUrl, "../");
             }
 
             return GetAbsoluteUrl(relativeUrl);
         }
 
-        private static string GetParComposedUrl(string relativeUrl,string relativeSymbol)
+        private static string GetPartComposedUrl(string relativeUrl,string relativeSymbol)
         {
 
             var componentUrl = relativeUrl.Substring(relativeUrl.IndexOf(relativeSymbol) + relativeSymbol.Length);
