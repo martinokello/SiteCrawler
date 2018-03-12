@@ -101,3 +101,8 @@ C:\C#Projects\SiteCrawler\SiteCrawler\bin\HtmlAgilityPack.pdb
 C:\C#Projects\SiteCrawler\SiteCrawler\bin\HtmlAgilityPack.xml
 C:\C#Projects\SiteCrawler\SiteCrawler\obj\Debug\SiteCrawler.dll
 C:\C#Projects\SiteCrawler\SiteCrawler\obj\Debug\SiteCrawler.pdb
+C:\C#Projects\SiteCrawler\SiteCrawler\bin\Unity.Abstractions.dll
+C:\C#Projects\SiteCrawler\SiteCrawler\bin\Unity.Container.dll
+C:\C#Projects\SiteCrawler\SiteCrawler\bin\Unity.Mvc.dll
+C:\C#Projects\SiteCrawler\SiteCrawler\bin\WebActivatorEx.dll
+C:\C#Projects\SiteCrawler\SiteCrawler\bin\Unity.Mvc.xml

@@ -10,6 +10,7 @@ using System.Configuration;
 using SiteCrawler.Services;
 using SiteCrawler.Domain.Models.Models;
 using SiteCrawler.DataAccess.Concretes;
+using SiteCrawler.DataAccess.Interfaces;
 
 namespace SiteCrawler.Controllers
 {
@@ -20,11 +21,11 @@ namespace SiteCrawler.Controllers
         private SiteCrawlerRepositoryServices _reporsitoryService;
 
 
-        public HomeController()
+        public HomeController(ISiteRepositoryMarker siteRepository,ISitePageRepositoryMarker sitePageRepositoryMarker)
         {
             //Dependency Injection using Unity Is Possible but haven't the time for this exercise.
             _siteCrawlerCaching = new Caching<Dictionary<string, string[]>>();
-            var unitOfWork = new Services.Concretes.SiteCrawlerUnitOfWork(new SiteRepository(), new SitePageRepository());
+            var unitOfWork = new Services.Concretes.SiteCrawlerUnitOfWork(siteRepository, sitePageRepositoryMarker);
             _reporsitoryService = new SiteCrawlerRepositoryServices(unitOfWork);
         }
         [HttpGet]
