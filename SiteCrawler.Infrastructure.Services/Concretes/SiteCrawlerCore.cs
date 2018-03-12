@@ -43,7 +43,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
                 foreach (var childlink in contentLinks)
                 {
 
-                    //WriteToDatabase(pageLink, childlink);
+                    WriteToDatabase(pageLink, childlink);
                     if (UrlToPagesMapper.ContainsKey(childlink)) continue;
                     var rateOfCrawling = 1000;
                     Int32.TryParse(ConfigurationManager.AppSettings["IntervalOfCrawling"], out rateOfCrawling);
@@ -54,7 +54,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
             }
         }
 
-        public void WriteToDatabase(string domainUrl, string childlink)
+        private void WriteToDatabase(string domainUrl, string childlink)
         {
 
             var site = RepositoryServices.GetSitesByDomain(RootDomain);

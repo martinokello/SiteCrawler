@@ -50,24 +50,23 @@ namespace SiteCrawler.Controllers
                 if(!domainUrl.EndsWith("/"))domainUrl += "/";
                 _siteCrawlerEngine = new SiteCrawlerCore(domainUrl);
                 _siteCrawlerEngine.RootDomain = domainUrl;
+                _siteCrawlerEngine.RepositoryServices = _reporsitoryService;
 
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
                 //Thought of Caching but not required due to high memory usage: therefore DB persistence required.
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-                //Func<Dictionary<string, string[]>> getOrSaveInCache = () => { _siteCrawlerEngine.Crawl(domainUrl); return _siteCrawlerEngine.UrlToPagesMapper; };
+                Func<Dictionary<string, string[]>> getOrSaveInCache = () => { _siteCrawlerEngine.Crawl(domainUrl); return _siteCrawlerEngine.UrlToPagesMapper; };
 
-                //var cachedSiteMap =_siteCrawlerCaching.GetFromCache(string.Format("SiteResults{0}", domainUrl),Int32.Parse(ConfigurationManager.AppSettings["SiteResultDaysToCache"])*3600*24, getOrSaveInCache);
-                _siteCrawlerEngine.RepositoryServices = _reporsitoryService;
-                var startTime =DateTime.Now;
-                _siteCrawlerEngine.Crawl(domainUrl);
+                var startTime = DateTime.Now;
+                var cachedSiteMap =_siteCrawlerCaching.GetFromCache(string.Format("SiteResults{0}", domainUrl),Int32.Parse(ConfigurationManager.AppSettings["SiteResultDaysToCache"])*3600*24, getOrSaveInCache);
+
                 var endTime = DateTime.Now;
                 var timeSpan = endTime - startTime;
 
                 ViewBag.TimeElapsed = string.Format("Duration of Site Crawl: {0} hours {1} minutes {2} seconds",
                     timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
-                 //var cachedSiteMap = _siteCrawlerEngine.UrlToPagesMapper;
-                return View("Index", _siteCrawlerEngine.UrlToPagesMapper);
+                return View("Index", cachedSiteMap);
             }
             catch (Exception ex)
             {
