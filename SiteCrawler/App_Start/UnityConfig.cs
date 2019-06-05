@@ -1,51 +1,52 @@
 using System;
+using System.Web.Mvc;
+using Microsoft.Practices.Unity.Mvc;
 using SiteCrawler.DataAccess.Concretes;
 using SiteCrawler.DataAccess.Interfaces;
-using SiteCrawler.Services.Concretes;
-using SiteCrawler.Services.Interfaces;
-using Unity;
 
-namespace SiteCrawler
+namespace SiteCrawler.App_Start
 {
+    using Microsoft.Practices.Unity;
+    using System;
+    using System.Collections.Generic;
+    using System.Web.Http.Dependencies;
+
     /// <summary>
     /// Specifies the Unity configuration for the main container.
     /// </summary>
-    public static class UnityConfig
+    public class UnityConfig
     {
         #region Unity Container
-        private static Lazy<IUnityContainer> container =
-          new Lazy<IUnityContainer>(() =>
-          {
-              var container = new UnityContainer();
-              RegisterTypes(container);
-              return container;
-          });
+        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        {
+            var container = new UnityContainer();
+            return container;
+        });
 
         /// <summary>
-        /// Configured Unity Container.
+        /// Gets the configured Unity container.
         /// </summary>
-        public static IUnityContainer Container => container.Value;
+        public static IUnityContainer GetConfiguredContainer()
+        {
+            return container.Value;
+        }
         #endregion
 
-        /// <summary>
-        /// Registers the type mappings with the Unity container.
-        /// </summary>
+        /// <summary>Registers the type mappings with the Unity container.</summary>
         /// <param name="container">The unity container to configure.</param>
-        /// <remarks>
-        /// There is no need to register concrete types such as controllers or
-        /// API controllers (unless you want to change the defaults), as Unity
-        /// allows resolving a concrete type even if it was not previously
-        /// registered.
-        /// </remarks>
+        /// <remarks>There is no need to register concrete types such as controllers or API controllers (unless you want to 
+        /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            // NOTE: To load from web.config uncomment the line below.
-            // Make sure to add a Unity.Configuration to the using statements.
+            // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
 
-            // TODO: Register your type's mappings here.
+            // TODO: Register your types here
+
             container.RegisterType<ISiteRepositoryMarker, SiteRepository>();
             container.RegisterType<ISitePageRepositoryMarker, SitePageRepository>();
+
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
 }

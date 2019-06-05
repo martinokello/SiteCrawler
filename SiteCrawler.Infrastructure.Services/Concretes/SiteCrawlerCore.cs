@@ -20,6 +20,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
         {
             UrlToPagesMapper = new Dictionary<string, string[]>();
             _siteprocessor = new SiteCrawlerUrlProcessor();
+            _siteprocessor.RootDomain = url;
         }
 
         public Dictionary<string, string[]> UrlToPagesMapper{ get;set;}

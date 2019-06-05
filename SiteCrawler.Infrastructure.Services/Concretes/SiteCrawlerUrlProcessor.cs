@@ -31,22 +31,26 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
         }
         private string StripQueryAndParameters(string url)
         {
-            return url.Contains("?") ? url.Substring(0, url.LastIndexOf("?")): url;
+            return /*url.Contains("?") ? url.Substring(0, url.LastIndexOf("?")): */url;
         }
 
         public bool IsContentPage(string url)
         {
+            if (!url.ToLower().StartsWith(RootDomain.ToLower())) return false;
+            if (Regex.IsMatch(url.ToLower(), ".*/0+$")) return false;
             var validExtensions = ConfigurationManager.AppSettings["RestrictedHtmlContent"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             if (url.EndsWith("/"))return true;
             if(url.StartsWith("#"))return false;
-
+            if(url.ToLower().Contains("?prodId=check")) return true; 
+            if (Regex.IsMatch(url.ToLower(), ".*/[a-z]+$")) return true;
+            if (Regex.IsMatch(url.ToLower(), ".*/[a-z]+$")) return true;
+            if (Regex.IsMatch(url.ToLower(), ".*/(\\d+)$")) return true;
             if (url.Contains("."))
             {
                 foreach(var ext in validExtensions)
                 {
                     if (url.ToLower().EndsWith(ext.ToLower()))return true;
                 }
-                if (Regex.IsMatch(url.ToLower(), ".*/[a-z]+$")) return true;
                 return false;
             }
             return true;

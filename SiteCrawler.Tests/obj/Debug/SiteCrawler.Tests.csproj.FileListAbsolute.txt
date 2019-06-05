@@ -5,3 +5,11 @@ C:\C#Projects\SiteCrawler\SiteCrawler.Tests\bin\Debug\Microsoft.VisualStudio.Qua
 C:\C#Projects\SiteCrawler\SiteCrawler.Tests\obj\Debug\SiteCrawler.Tests.csprojResolveAssemblyReference.cache
 C:\C#Projects\SiteCrawler\SiteCrawler.Tests\obj\Debug\SiteCrawler.Tests.dll
 C:\C#Projects\SiteCrawler\SiteCrawler.Tests\obj\Debug\SiteCrawler.Tests.pdb
+C:\Development\SiteCrawler\SiteCrawler.Tests\bin\Debug\SiteCrawler.Tests.dll
+C:\Development\SiteCrawler\SiteCrawler.Tests\bin\Debug\SiteCrawler.Tests.pdb
+C:\Development\SiteCrawler\SiteCrawler.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Development\SiteCrawler\SiteCrawler.Tests\obj\Debug\SiteCrawler.Tests.csprojAssemblyReference.cache
+C:\Development\SiteCrawler\SiteCrawler.Tests\obj\Debug\SiteCrawler.Tests.csproj.CoreCompileInputs.cache
+C:\Development\SiteCrawler\SiteCrawler.Tests\obj\Debug\SiteCrawler.Tests.csproj.CopyComplete
+C:\Development\SiteCrawler\SiteCrawler.Tests\obj\Debug\SiteCrawler.Tests.dll
+C:\Development\SiteCrawler\SiteCrawler.Tests\obj\Debug\SiteCrawler.Tests.pdb
