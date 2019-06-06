@@ -12,7 +12,7 @@
                 color: black !important;
             }
         div.sub-color, div.sub-color a {
-            background-color: lightblue !important;
+            background-color: skyblue !important;
             color: white;
             text-decoration: none;
         }
@@ -32,7 +32,7 @@
         <hr style="width:60%;text-align:center;"/>
         @using (Html.BeginForm("Index","Home")){ 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-11">
                     <label for="domainUrl">Enter Site Details</label><br/>
                     <input type="text" id="siteDomain" name="domainUrl" placeholder="SiteUrl with protocol e.g http://www.martinlayooinc.co.uk" style="min-width:100%;"/>
                     @Html.ValidationMessage("domainUrl", new { @style="color:red;"})
@@ -51,12 +51,12 @@
                     foreach (var key in Model.Keys)
                     {
                         <div class="row">
-                            <div class="col-md-5 gold-color">
+                            <div class="col-lg-5 gold-color">
                                 @Html.Raw(!string.IsNullOrEmpty(key) ? "<li><a href='" + key + "'>" + key + "</a></li>" : "<li>&nbsp;</li>")
                                 <hr style="width:65%; text-align:center;" />
                             </div>
 
-                            <div class="col-md-7 sub-color">
+                            <div class="col-lg-7 sub-color">
                                 <ul>
                                     @foreach (var value in Model[key])
                                     {

@@ -41,7 +41,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
             var validExtensions = ConfigurationManager.AppSettings["RestrictedHtmlContent"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             if (url.EndsWith("/"))return true;
             if(url.StartsWith("#"))return false;
-            if(url.ToLower().Contains("?prodId=check")) return true; 
+            if(url.ToLower().Contains("?prodid=check")) return true; 
             if (Regex.IsMatch(url.ToLower(), ".*/[a-z]+$")) return true;
             if (Regex.IsMatch(url.ToLower(), ".*/[a-z]+$")) return true;
             if (Regex.IsMatch(url.ToLower(), ".*/(\\d+)$")) return true;
