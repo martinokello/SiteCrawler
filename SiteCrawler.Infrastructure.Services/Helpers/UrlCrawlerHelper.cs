@@ -8,10 +8,11 @@ namespace SiteCrawler.Infrastructure.Services.Helpers
 {
     public class UrlCrawlerHelper
     {
+        public static string RootUrl { get; set; }
         public static string GetAbsoluteUrl(string relativeUrl)
         {
             //Relative url . and .. taken care of while crawling.
-            if (!relativeUrl.Contains("./") && !relativeUrl.Contains("../"))
+            if (!relativeUrl.Contains("./") && !relativeUrl.Contains("../") && !relativeUrl.StartsWith("/"))
             {
                 return relativeUrl;
             }
@@ -23,6 +24,11 @@ namespace SiteCrawler.Infrastructure.Services.Helpers
             if (relativeUrl.Contains("../"))
             {
                 return GetPartComposedUrl(relativeUrl, "../");
+            }
+
+            if(relativeUrl.StartsWith("/"))
+            {
+                return RootUrl.Trim('/') + relativeUrl;
             }
 
             return GetAbsoluteUrl(relativeUrl);

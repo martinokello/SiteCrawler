@@ -36,6 +36,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
 
         public bool IsContentPage(string url)
         {
+            if (url.StartsWith("/")) return true;
             if (!url.ToLower().StartsWith(RootDomain.ToLower())) return false;
             if (Regex.IsMatch(url, ".*\\?prodId=[c|C]heck[a-zA-Z0-9]+$")) return true;
             if (Regex.IsMatch(url.ToLower(), ".*/0+$")) return false;
@@ -58,6 +59,7 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
 
         public string GetContentPageName(string url)
         {
+            UrlCrawlerHelper.RootUrl = RootDomain;
             url = UrlCrawlerHelper.GetAbsoluteUrl(url);
             if (Regex.IsMatch(url, ".*\\?prodId=[c|C]heck[a-zA-Z0-9]+$")) return url;
 

@@ -54,10 +54,11 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
 
                     if (p.ToLower().StartsWith(RootDomain.Substring(0, RootDomain.LastIndexOf("/"))))
                     {
+                       /* Don't strip query strings
                         if (p.Contains("?"))
                         {
                             p = p.Substring(0, p.IndexOf("?"));
-                        }
+                        }*/
 
                         anchorList.Add(p);
                     }
