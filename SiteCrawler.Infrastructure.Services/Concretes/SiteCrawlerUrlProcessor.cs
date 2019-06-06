@@ -37,11 +37,11 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
         public bool IsContentPage(string url)
         {
             if (!url.ToLower().StartsWith(RootDomain.ToLower())) return false;
+            if (Regex.IsMatch(url, ".*\\?prodId=[c|C]heck[a-zA-Z0-9]+$")) return true;
             if (Regex.IsMatch(url.ToLower(), ".*/0+$")) return false;
             var validExtensions = ConfigurationManager.AppSettings["RestrictedHtmlContent"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             if (url.EndsWith("/"))return true;
             if(url.StartsWith("#"))return false;
-            if(url.ToLower().Contains("?prodid=check")) return true; 
             if (Regex.IsMatch(url.ToLower(), ".*/[a-z]+$")) return true;
             if (Regex.IsMatch(url.ToLower(), ".*/[a-z]+$")) return true;
             if (Regex.IsMatch(url.ToLower(), ".*/(\\d+)$")) return true;
@@ -59,10 +59,12 @@ namespace SiteCrawler.Infrastructure.Services.Concretes
         public string GetContentPageName(string url)
         {
             url = UrlCrawlerHelper.GetAbsoluteUrl(url);
+            if (Regex.IsMatch(url, ".*\\?prodId=[c|C]heck[a-zA-Z0-9]+$")) return url;
 
             if (IsContentPage(url) && url.Contains("/") && url.ToLower().StartsWith(RootDomain.ToLower().Trim('/')))
             {
                 if (url.EndsWith("/")) return url;
+
                 return url.Substring(url.LastIndexOf("/"));
             }
             else if (IsContentPage(url))

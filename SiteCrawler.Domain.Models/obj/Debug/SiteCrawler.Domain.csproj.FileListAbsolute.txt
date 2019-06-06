@@ -8,4 +8,3 @@ C:\Development\SiteCrawler\SiteCrawler.Domain.Models\bin\Debug\SiteCrawler.Domai
 C:\Development\SiteCrawler\SiteCrawler.Domain.Models\obj\Debug\SiteCrawler.Domain.csproj.CoreCompileInputs.cache
 C:\Development\SiteCrawler\SiteCrawler.Domain.Models\obj\Debug\SiteCrawler.Domain.Models.dll
 C:\Development\SiteCrawler\SiteCrawler.Domain.Models\obj\Debug\SiteCrawler.Domain.Models.pdb
-C:\Development\SiteCrawler\SiteCrawler.Domain.Models\obj\Debug\SiteCrawler.Domain.csprojAssemblyReference.cache
